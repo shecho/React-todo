@@ -12,7 +12,7 @@ export default function nav() {
         </div>
         <ul className="nav-links">
           <li>
-            <i className="fa fa-home" aria-hidden="true"></i>Home
+            <i className="fa fa-home mx-2" aria-hidden="true"></i>Home
           </li>
           <li>
             <i className="fa fa-sign-in mx-2" aria-hidden="true"></i>Login
