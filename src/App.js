@@ -2,8 +2,9 @@ import React from "react";
 
 import "./App.css";
 import Loading from "./components/loading/loading";
-import Login from "./components/login/login";
-import Register from "./components/register/register";
+import Login2 from "./components/login/login2";
+import Register2 from "./components/register/register2";
+import Nav from "./components/nav/nav";
 
 class App extends React.Component {
   constructor() {
@@ -22,16 +23,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        {this.state.loading ? (
-          <Loading />
-        ) : (
-          <div className="row justify-content-center">
-            <Login />
-            <Register />
-          </div>
-        )}
-      </div>
+      <>
+        <div className="">
+          {this.state.loading ? (
+            <Loading />
+          ) : (
+            <div>
+              <div className="">
+                <Nav />
+              </div>
+              <div className="row justify-content-center">
+                <Login2 />
+                <Register2 />
+              </div>
+            </div>
+          )}
+        </div>
+      </>
     );
   }
 }
