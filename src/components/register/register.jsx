@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function Login() {
+export default function Register() {
   return (
     <>
       <div className="m-4 row">
         <div className="col-12 text-center">
-          <h1>Login</h1>
+          <h1> Register</h1>
           <form>
             <div className="form-group">
               <input
@@ -43,7 +43,7 @@ export default function Login() {
             <input
               className="btn btn-success btn-block"
               type="submit"
-              value="Login"
+              value="Register"
             />
           </form>
         </div>
