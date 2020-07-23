@@ -15,6 +15,7 @@ export default function Register2() {
     e.preventDefault();
     // console.log(JSON.stringify(user));
     let url = `https://academlo-todolist.herokuapp.com/register`;
+
     let response = await fetch(url, {
       method: "POST",
       headers: {
@@ -24,6 +25,8 @@ export default function Register2() {
     });
     let res = await response.json();
     console.log(res);
+    // console.log(res.errors.length);
+    res.errors.length <= 0 ? alert("Todo Ok") : alert("faltan datos");
   };
 
   return (
