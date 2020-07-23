@@ -6,12 +6,7 @@ import Register2 from "./components/register/register2";
 
 import Nav from "./components/nav/nav";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends React.Component {
   constructor() {
