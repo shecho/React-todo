@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./login2.css";
-
 export default function Login2() {
   const [user, setUser] = useState({});
+  const [isLogged, setIslogged] = useState(false);
+
   let handleInput = (e) => {
     e.preventDefault();
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -11,7 +12,7 @@ export default function Login2() {
   const loginUser = async (e) => {
     e.preventDefault();
     let url = `https://academlo-todolist.herokuapp.com/login`;
-    console.log(url);
+    // console.log(url);
     let response = await fetch(url, {
       method: "POST",
       headers: {
@@ -19,14 +20,21 @@ export default function Login2() {
       },
       body: JSON.stringify(user),
     });
-    let res = await response.json();
+    // let res = await response.json();
 
     console.log(response.status);
-    console.log(res.console.errors);
-    response.status > 400
-      ? alert("credenciasles incorrectas")
-      : alert("Todo ok");
+
+    response.status >= 200 && response.status < 300
+      ? loginRedirect()
+      : alert("credenciasles incorrectas");
   };
+  let loginRedirect = async () => {
+    console.log(`Loggin Suscessfuly`);
+    setIslogged(true);
+    console.log(isLogged);
+    window.location.href = "/tasks";
+  };
+
   return (
     <div className="">
       <form

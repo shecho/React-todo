@@ -7,13 +7,14 @@ import Tasks from "./components/tasks/tasks";
 
 import Nav from "./components/nav/nav";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       loading: true,
       open: false,
+      loggedIn: false,
     };
   }
 
@@ -36,9 +37,16 @@ class App extends React.Component {
                   <Nav />
                 </div>
                 <div className="row justify-content-center">
-                  <Route path="/login" component={Login2} />
+                  {/* <Route path="/login" component={Login2} /> */}
                   <Route path="/register" component={Register2} />
                   <Route exact path="/tasks" component={Tasks} />
+                  <Route exact path="/login" component={Home}>
+                    {this.state.loggedIn === true ? (
+                      <Redirect to="/tasks" />
+                    ) : (
+                      <Login2 />
+                    )}
+                  </Route>
                   <Route exact path="/" component={Home} />
                 </div>
               </div>
