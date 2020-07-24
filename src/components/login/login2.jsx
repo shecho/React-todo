@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login2.css";
 
 export default function Login2() {
+  const [user, setUser] = useState({});
+  let handleInput = (e) => {
+    e.preventDefault();
+    setUser({ ...user, [e.target.name]: e.target.value });
+    console.log(user);
+  };
+  const loginUser = async(e) => {
+    e.preventDefault();
+    let url = `https://academlo-todolist.herokuapp.com/login`;
+    console.log(url);
+    let response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(user),
+    });
+    let res = await response.json();
+    console.log(res);
+      
+    res.errors  ? alert("Credencias correctas") : alert("Crendencias incorrectas");
+      
+  };
   return (
     <div className="">
-      <form action="index.html" className="form-box animated fadeInUp">
+      <form
+        onInput={handleInput}
+        onSubmit={(e) => loginUser(e)}
+        className="form-box animated fadeInUp"
+      >
         <h1 className="form-title">SignIn</h1>
-        <input type="text" placeholder="Username" autoFocus />
-        <input type="password" placeholder="Password" />
+        <input name="email" type="email" placeholder="Email" autoFocus />
+        <input name="password" type="password" placeholder="Password" />
         <button type="submit">
           <i className="fa fa-sign-in mx-2" aria-hidden="true"></i>Login
         </button>

@@ -23,10 +23,17 @@ export default function Register2() {
       },
       body: JSON.stringify(user),
     });
+    console.log(response.status);
     let res = await response.json();
-    console.log(res);
     // console.log(res.errors.length);
-    res.errors.length <= 0 ? alert("Todo Ok") : alert("faltan datos");
+    // console.log(res.status);
+    // response.status >= 400
+    //   ? alert("Datos Incorrectos")
+    //   : response.status >= 300
+    //   ? alert("Redirecionado")
+    //   : alert("credenciasles correctas");
+    response.status > 400 ? alert("Llena todos los campos") : alert("Todo ok");
+    // history.push
   };
 
   return (
