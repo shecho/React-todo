@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import "./login2.css";
-export default function Login2() {
+export default function Login2(props) {
   const [user, setUser] = useState({});
   const [isLogged, setIslogged] = useState(false);
-
   let handleInput = (e) => {
     e.preventDefault();
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
+    // console.log(user);
   };
   const loginUser = async (e) => {
     e.preventDefault();
@@ -20,19 +19,10 @@ export default function Login2() {
       },
       body: JSON.stringify(user),
     });
-    // let res = await response.json();
-
-    console.log(response.status);
 
     response.status >= 200 && response.status < 300
-      ? loginRedirect()
+      ? props.handleLogStatus(true)
       : alert("credenciasles incorrectas");
-  };
-  let loginRedirect = async () => {
-    console.log(`Loggin Suscessfuly`);
-    setIslogged(true);
-    console.log(isLogged);
-    window.location.href = "/tasks";
   };
 
   return (
