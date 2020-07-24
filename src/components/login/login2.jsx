@@ -8,7 +8,7 @@ export default function Login2() {
     setUser({ ...user, [e.target.name]: e.target.value });
     console.log(user);
   };
-  const loginUser = async(e) => {
+  const loginUser = async (e) => {
     e.preventDefault();
     let url = `https://academlo-todolist.herokuapp.com/login`;
     console.log(url);
@@ -20,10 +20,12 @@ export default function Login2() {
       body: JSON.stringify(user),
     });
     let res = await response.json();
-    console.log(res);
-      
-    res.errors  ? alert("Credencias correctas") : alert("Crendencias incorrectas");
-      
+
+    console.log(response.status);
+    console.log(res.console.errors);
+    response.status > 400
+      ? alert("credenciasles incorrectas")
+      : alert("Todo ok");
   };
   return (
     <div className="">

@@ -25,7 +25,7 @@ export default function Register2() {
     });
     console.log(response.status);
     let res = await response.json();
-    // console.log(res.errors.length);
+    console.log(res.errors);
     // console.log(res.status);
     // response.status >= 400
     //   ? alert("Datos Incorrectos")
