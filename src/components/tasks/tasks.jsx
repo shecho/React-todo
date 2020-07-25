@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import Task from '../task/task';
+const Tasks = (props) => {
+  const [tasks, setTasks] = useState()
 
- 
-export default function Tasks(){
+    useEffect(() => {
+    getTasks()
+  }, []);
+
+
+  const getTasks = async () => {
+    let url = `https://academlo-todolist.herokuapp.com/tasks`;
+    // console.log(url);
+    let response = await fetch(url);
+    console.log(response);
+
+  };
   return (
-    <div>
-    <h1>Tasks</h1>
+    <div className="row">
+      <Task />
+      <Task />
+      <Task />
+      <Task />
     </div>
   );
-}
+};
+
+export default Tasks;

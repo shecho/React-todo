@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, {useState}  from "react";
 import "./login2.css";
+
+
 export default function Login2(props) {
   const [user, setUser] = useState({});
-  const [isLogged, setIslogged] = useState(false);
   let handleInput = (e) => {
     e.preventDefault();
     setUser({ ...user, [e.target.name]: e.target.value });
-    // console.log(user);
+    console.log(user);
   };
   const loginUser = async (e) => {
     e.preventDefault();
