@@ -1,22 +1,28 @@
-/* .headerTasks { */
-/* position: ; */
-/* top: 10vh; */
-/* left: 0; */
-/* bottom: 0; */
-/* width: 200px; */
-/* transition: all ease-in-out 0.5s; */
-/* z-index: 9997; */
-/* transition: all 0.5s; */
-/* padding: 0 px; */
-/* overflow-y: auto; */
-/* } */
+.headerTasks {
+    position: absolute;
+    top: 15vh;
+    /* left: 0;
+    bottom: 0; */
+    /* width: 20vw; */
+    /* transition: all ease-in-out 0.5s;
+    z-index: 9997;
+    transition: all 0.5s;
+    padding: 0 px;
+    overflow-y: auto; */
+}
 
-/* .tasks-container { */
-/* margin-top: 10vh; */
-/* margin-left: 200px; */
-/* background-color: red !important; */
-/* min-width: 90vh; */
-/* height: 90vh; */
-/* width: 100%; */
-/* max-height: 100vh; */
-/* } */
+.contenedor {
+    height: 90vh;
+    width: 100vw;
+}
+
+
+.tasks-container {
+    margin-top: 15vh;
+    margin-left: 20vw;
+    /* background-color: red !important; */
+    min-width: 90vh;
+    height: 90vh;
+    width: 100%;
+    max-height: 100vh;
+}

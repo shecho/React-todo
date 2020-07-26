@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Task from "../task/task";
-import './tasks.css'
+import "./tasks.css";
 const Tasks = (props) => {
   const [tasks, setTasks] = useState();
 
@@ -27,34 +27,40 @@ const Tasks = (props) => {
 
   return (
     <>
-      <div className="container">
-        <div className="headerTasks">
-          <div className="d-flex flex-column">
-            <div className="">
-              <button className="w-100 btn btn-primary btn-large">
-                <i className="h1 fa fa-plus-circle" aria-hidden="true"></i>{" "}
+      <div className="container ">
+        <div className="">
+          <div className="">
+            <div className="mt-4 text-center">
+              <button className="my-2 btn btn-primary ">
+                <i className="h1 fa fa-plus-circle" aria-hidden="true"></i> Add
+                New task
               </button>
-              <button className="w-100 btn btn-primary btn-large">
+              <button className="my-2 btn btn-primary">
                 <i className="h1 fa fa-plus-circle" aria-hidden="true"></i>{" "}
+                Filter by Desc
               </button>
- 
+
+              <button className="my-2 btn btn-primary">
+                <i className="h1 fa fa-plus-circle" aria-hidden="true"></i>{" "}
+                Filter Date
+              </button>
             </div>
           </div>
         </div>
         <div className="">
-          <div className="row">
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-            <Task />
+          <div className="">
+            <div className="row ">
+              <Task />
+              <Task />
+              <Task />
+              <Task />
+              <Task />
+
+              <Task />
+              <Task />
+              <Task />
+              <Task />
+            </div>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import React from "react";
 const Task = (props) => {
   return (
     <div>
-      <div className="col m-3 px-3">
+      <div className="col m-3 px-2">
         <div className="card text-center">
           <div className="card-body text-center">
             <div className="d-flex justify-content-center align-items-center ">
