@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     /* No Scrollbar */
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .form-box {
