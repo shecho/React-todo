@@ -11,8 +11,6 @@ const Tasks = (props) => {
   }, []);
 
   const getTasks = async () => {
-    setTasks([]);
-    console.log(tasks);
     let url = `https://academlo-todolist.herokuapp.com/tasks`;
     // console.log(url);
     let response = await fetch(url);
