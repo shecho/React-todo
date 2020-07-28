@@ -14,12 +14,12 @@ const Task = (props) => {
             </div>
           </div>
           <div>
-            <button className="btn btn-danger m-2" type="submit">
+            <button onClick={props.handleTogleEditShow} className="btn btn-danger m-2" type="submit">
               Delete Task
               <i className="m-2 fa fa-trash-o" aria-hidden="true"></i>
             </button>
 
-            <button className=" btn btn-success m-2 " type="submit">
+            <button onClick={props.handleTogleEditShow} className=" btn btn-success m-2 " type="submit">
               Edit Task
               <i className="m-2 fa fa-pencil"></i>
             </button>
