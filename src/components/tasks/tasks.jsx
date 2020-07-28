@@ -3,6 +3,8 @@ import Task from "../task/task";
 import "./tasks.css";
 import AddTasks from "../forms/addTask";
 import UpdateTasks from "../forms/updateTask";
+import SearchTasks from "../forms/search";
+
 const Tasks = () => {
   const [tasks, setTasks] = useState();
   let [showForm, setShowForm] = useState(false);
@@ -40,32 +42,40 @@ const Tasks = () => {
     e.preventDefault();
     setShowEditForm(!showEditForm);
   };
+
+  const panelContainerStyles = {
+    position: "absolute",
+    top: "0",
+    left: "0"
+  }
   return (
     <>
       <div className="container ">
         <div className="">
           <div className="">
-            <div className="acctions-container d-flex flex-column w-25">
+            <div style={panelContainerStyles} className="">
               <button
-                className="my-2 btn btn-primary "
+                className="m-2 btn btn-primary "
                 onClick={(e) => handleTogleShow(e)}
               >
                 <i className="h1 fa fa-plus-circle" aria-hidden="true"></i> Add
                 New task
               </button>
-              <button className="my-2 btn btn-primary">
-                <i className="h1 fa fa-plus-circle" aria-hidden="true"></i>{" "}
-                Filter by Descrip
-              </button>
 
-              <button className="my-2 btn btn-primary">
+              <button className="m-2 btn btn-primary">
                 <i className="h1 fa fa-plus-circle" aria-hidden="true"></i>{" "}
                 Filter Date
               </button>
+
+              <button className="m-2 btn btn-primary">
+                <i className="h1 fa fa-filter" aria-hidden="true"></i>{" "}
+                Filter by Desc
+              </button>
             </div>
-            <div className="row d-flex justify-content-around">
+            <div className="mt-5 pt-5 row d-flex justify-content-around">
               <AddTasks addTask={addTask} showForm={showForm} />
               <UpdateTasks updateTask={updateTask} showEditForm={showEditForm} />
+              <SearchTasks/>
             </div>
           </div>
         </div>
@@ -97,6 +107,18 @@ const Tasks = () => {
                 showEditForm={showEditForm}
               />
 
+              <Task
+                deleteTask={deleteTask}
+                editTask={editTask}
+                handleTogleEditShow={handleTogleEditShow}
+                showEditForm={showEditForm}
+              />
+              <Task
+                deleteTask={deleteTask}
+                editTask={editTask}
+                handleTogleEditShow={handleTogleEditShow}
+                showEditForm={showEditForm}
+              />
             </div>
           </div>
         </div>

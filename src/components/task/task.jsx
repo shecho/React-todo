@@ -14,7 +14,7 @@ const Task = (props) => {
             </div>
           </div>
           <div>
-            <button onClick={props.handleTogleEditShow} className="btn btn-danger m-2" type="submit">
+            <button  className="btn btn-danger m-2" type="submit">
               Delete Task
               <i className="m-2 fa fa-trash-o" aria-hidden="true"></i>
             </button>
