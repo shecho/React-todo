@@ -5,38 +5,22 @@ const AddTask = (props) => {
     <>
       <div className={`text-center ${props.showForm ? '' : 'd-none'}`}>
         <h4> Add Tasks</h4>
-        <form onInput={props.handleInput} onSubmit={(e) => props.addUser(e)}>
+        <form onInput={props.handleInput} onSubmit={(e) => props.addTask(e)}>
           <div className="form-group">
             <input
               className="form-control"
-              name="name"
+              name="content"
               type="text"
-              placeholder="Nombre"
+              placeholder="Content"
             />
           </div>
           <div className="form-group">
             <input
               className="form-control"
               capture
-              name="lastname"
-              type="text"
-              placeholder="Apellido"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="email"
-              type="text"
-              placeholder="Email"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="password"
-              type="password"
-              placeholder="Password"
+              name="date"
+              type="date"
+            placeholder="Date"
             />
           </div>
           <input className="btn btn-success btn-block" type="submit" />

@@ -14,7 +14,7 @@ const SearchTasks = (props) => {
           className="form-group d-flex border justify-content-center align-items-center"
           style={contaierStyles}
         >
-          <i class="h1 p-1 text-dark fa fa-search" aria-hidden="true"></i>
+          <i className="h1 p-1 text-dark fa fa-search" aria-hidden="true"></i>
           <input
             style={inputStyles}
             className="form-control"

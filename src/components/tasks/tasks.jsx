@@ -6,13 +6,12 @@ import UpdateTasks from "../forms/updateTask";
 import SearchTasks from "../forms/search";
 import DateFilter from "../forms/dateFilter";
 
-
-
-  
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
-  let [showForm, setShowForm] = useState(false);
-  let [showEditForm, setShowEditForm] = useState(false);
+  const [newTask, setNewTask] = useState([]);
+  const [updateData, setUpdateData] = useState([]);
+  let [showForm, setShowForm] = useState(true);
+  let [showEditForm, setShowEditForm] = useState(true);
   let [showDateForm, setShowDateForm] = useState(true);
   useEffect(() => {
     getTasks();
@@ -22,6 +21,16 @@ const Tasks = () => {
     // console.log(url);
     // let response = await fetch(url);
     console.log("response");
+  };
+
+  const handleInput = (e) => {
+    setNewTask({ ...newTask, [e.target.name]: e.target.value });
+    console.log(newTask);
+  };
+  const handleUpdateInput = (e) => {
+
+    setUpdateData({...updateData, [e.target.name]:e.target.value})
+    console.log(updateData);
   };
 
   const addTask = async (e) => {
@@ -47,16 +56,15 @@ const Tasks = () => {
   };
   const handleTogleDateForm = (e) => {
     e.preventDefault();
-  setShowDateForm(!showDateForm)
-  }
+    setShowDateForm(!showDateForm);
+  };
 
   const panelContainerStyles = {
     position: "absolute",
     top: "0",
-    left: "0"
-  }
+    left: "0",
+  };
 
-  
   return (
     <>
       <div className="container ">
@@ -71,20 +79,31 @@ const Tasks = () => {
                 New task
               </button>
 
-              <button className="m-2 btn btn-primary" onClick={(e)=> handleTogleDateForm(e)}>
+              <button
+                className="m-2 btn btn-primary"
+                onClick={(e) => handleTogleDateForm(e)}
+              >
                 <i className="h1 fa fa-plus-circle" aria-hidden="true"></i>{" "}
                 Filter Date
               </button>
 
               {/* <button className="m-2 btn btn-primary"> */}
-                {/* <i className="h1 fa fa-filter" aria-hidden="true"></i>{" "} */}
-                {/* Filter by Desc */}
+              {/* <i className="h1 fa fa-filter" aria-hidden="true"></i>{" "} */}
+              {/* Filter by Desc */}
               {/* </button> */}
             </div>
             <div className="mt-5 pt-5 row d-flex justify-content-around">
-              <AddTasks addTask={addTask} showForm={showForm} />
-              <UpdateTasks updateTask={updateTask} showEditForm={showEditForm} />
-              <SearchTasks/>
+              <AddTasks
+                addTask={addTask}
+                showForm={showForm}
+                handleInput={handleInput}
+              />
+              <UpdateTasks
+                handleUpdateInput={handleUpdateInput}
+                updateTask={updateTask}
+                showEditForm={showEditForm}
+              />
+              <SearchTasks />
               <DateFilter showDateForm={showDateForm} />
             </div>
           </div>

@@ -5,38 +5,22 @@ const UpdateTask = (props) => {
     <>
       <div className={` text-center ${props.showEditForm ? '' : 'd-none'}`}>
         <h4> Update Task</h4>
-        <form onInput={props.handleInput} onSubmit={(e) => props.addUser(e)}>
+        <form onInput={props.handleUpdateInput} onSubmit={(e) => props.updateTask(e)}>
           <div className="form-group">
             <input
               className="form-control"
-              name="name"
+              name="content"
               type="text"
-              placeholder="Nombre"
+              placeholder="Content"
             />
           </div>
           <div className="form-group">
             <input
               className="form-control"
               capture
-              name="lastname"
-              type="text"
+              name="date"
+              type="date"
               placeholder="Apellido"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="email"
-              type="text"
-              placeholder="Email"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="password"
-              type="password"
-              placeholder="Password"
             />
           </div>
           <input className="btn btn-success btn-block" type="submit" />
@@ -45,4 +29,4 @@ const UpdateTask = (props) => {
     </>
   );
 };
-export default UpdateTask;
+export default UpdateTask
