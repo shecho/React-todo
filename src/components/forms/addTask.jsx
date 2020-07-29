@@ -3,7 +3,7 @@ import React from "react";
 const AddTask = (props) => {
   return (
     <>
-      <div className={` ${props.showForm ? '' : 'd-none'}`}>
+      <div className={`text-center ${props.showForm ? '' : 'd-none'}`}>
         <h4> Add Tasks</h4>
         <form onInput={props.handleInput} onSubmit={(e) => props.addUser(e)}>
           <div className="form-group">

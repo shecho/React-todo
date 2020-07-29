@@ -5,11 +5,11 @@ const contaierStyles = {
   borderRadius: "8px",
 };
 const inputStyles = { border: "none" };
-const SearchTasks = (props) => {
+const DateFilter = (props) => {
   return (
     <div className="row">
       {/* <h4> Seacrh Task</h4> */}
-      <form onInput={props.handleInput} onSubmit={(e) => props.addUser(e)}>
+      <form onInput={props.handleInput}>
         <div
           className="form-group d-flex border justify-content-center align-items-center"
           style={contaierStyles}
@@ -27,4 +27,4 @@ const SearchTasks = (props) => {
     </div>
   );
 };
-export default SearchTasks;
+export default DateFilter;

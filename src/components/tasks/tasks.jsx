@@ -4,15 +4,19 @@ import "./tasks.css";
 import AddTasks from "../forms/addTask";
 import UpdateTasks from "../forms/updateTask";
 import SearchTasks from "../forms/search";
+import DateFilter from "../forms/dateFilter";
 
+
+
+  
 const Tasks = () => {
-  const [tasks, setTasks] = useState();
+  const [tasks, setTasks] = useState([]);
   let [showForm, setShowForm] = useState(false);
   let [showEditForm, setShowEditForm] = useState(false);
+  let [showDateForm, setShowDateForm] = useState(false);
   useEffect(() => {
     getTasks();
   }, []);
-
   const getTasks = async () => {
     // let url = `https://academlo-todolist.herokuapp.com/tasks`;
     // console.log(url);
@@ -38,16 +42,21 @@ const Tasks = () => {
     setShowForm(!showForm);
   };
   const handleTogleEditShow = (e) => {
-    console.log("cliked");
     e.preventDefault();
     setShowEditForm(!showEditForm);
   };
+  const handleTogleDateForm = (e) => {
+    e.preventDefault();
+  setShowDateForm(!showDateForm)
+  }
 
   const panelContainerStyles = {
     position: "absolute",
     top: "0",
     left: "0"
   }
+
+  
   return (
     <>
       <div className="container ">
@@ -62,20 +71,21 @@ const Tasks = () => {
                 New task
               </button>
 
-              <button className="m-2 btn btn-primary">
+              <button className="m-2 btn btn-primary" onClick={(e)=> handleTogleDateForm(e)}>
                 <i className="h1 fa fa-plus-circle" aria-hidden="true"></i>{" "}
                 Filter Date
               </button>
 
-              <button className="m-2 btn btn-primary">
-                <i className="h1 fa fa-filter" aria-hidden="true"></i>{" "}
-                Filter by Desc
-              </button>
+              {/* <button className="m-2 btn btn-primary"> */}
+                {/* <i className="h1 fa fa-filter" aria-hidden="true"></i>{" "} */}
+                {/* Filter by Desc */}
+              {/* </button> */}
             </div>
             <div className="mt-5 pt-5 row d-flex justify-content-around">
               <AddTasks addTask={addTask} showForm={showForm} />
               <UpdateTasks updateTask={updateTask} showEditForm={showEditForm} />
               <SearchTasks/>
+              <DateFilter/>
             </div>
           </div>
         </div>
