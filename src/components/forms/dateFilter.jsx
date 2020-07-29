@@ -7,7 +7,7 @@ const contaierStyles = {
 const inputStyles = { border: "none" };
 const DateFilter = (props) => {
   return (
-    <div className="row">
+      <div className={`row text-center ${props.showDateForm ? '' : 'd-none'}`}>
       {/* <h4> Seacrh Task</h4> */}
       <form onInput={props.handleInput}>
         <div
@@ -19,8 +19,8 @@ const DateFilter = (props) => {
             style={inputStyles}
             className="form-control"
             name="name"
-            type="text"
-            placeholder="Filter taks by description"
+            type="date"
+            placeholder="Select a Date"
           />
         </div>
       </form>

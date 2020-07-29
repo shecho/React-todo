@@ -13,7 +13,7 @@ const Tasks = () => {
   const [tasks, setTasks] = useState([]);
   let [showForm, setShowForm] = useState(false);
   let [showEditForm, setShowEditForm] = useState(false);
-  let [showDateForm, setShowDateForm] = useState(false);
+  let [showDateForm, setShowDateForm] = useState(true);
   useEffect(() => {
     getTasks();
   }, []);
@@ -85,7 +85,7 @@ const Tasks = () => {
               <AddTasks addTask={addTask} showForm={showForm} />
               <UpdateTasks updateTask={updateTask} showEditForm={showEditForm} />
               <SearchTasks/>
-              <DateFilter/>
+              <DateFilter showDateForm={showDateForm} />
             </div>
           </div>
         </div>
