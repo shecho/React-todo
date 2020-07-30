@@ -9,7 +9,7 @@ const SearchTasks = (props) => {
   return (
     <div className="row">
       {/* <h4> Seacrh Task</h4> */}
-      <form onInput={props.handleInput} onSubmit={(e) => props.addUser(e)}>
+      <form onInput={props.handleSearchInput} >
         <div
           className="form-group d-flex border justify-content-center align-items-center"
           style={contaierStyles}
@@ -18,7 +18,7 @@ const SearchTasks = (props) => {
           <input
             style={inputStyles}
             className="form-control"
-            name="name"
+            name="description"
             type="text"
             placeholder="Filter taks by description"
           />
