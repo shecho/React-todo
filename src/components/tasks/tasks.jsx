@@ -57,6 +57,7 @@ const Tasks = () => {
     // let response = res.json();
     console.log(res);
     res.status > 400 ? alert("Llena todos los campos") : alert("Todo ok");
+    getTasks();
   };
   const deleteTask = async (e) => {
     console.log(e);
@@ -85,35 +86,33 @@ const Tasks = () => {
     top: "0",
     left: "0",
   };
-
+  const formsContianerStyles = {
+    position: "relative",
+    top: "15vh",
+    rith: "",
+  };
   return (
     <>
-      <div className="container ">
-        <div className="">
-          <div className="">
-            <div style={panelContainerStyles} className="">
-              <button
-                className="m-2 btn btn-primary "
-                onClick={(e) => handleTogleShow(e)}
-              >
-                <i className="h1 fa fa-plus-circle" aria-hidden="true"></i> Add
-                New task
-              </button>
+      {/* <div className=""> */}
+      <div className="">
+        <div className="d-flex">
+          <div style={panelContainerStyles} className="text-center">
+            <button
+              className="m-2 btn btn-primary "
+              onClick={(e) => handleTogleShow(e)}
+            >
+              <i className="h1 fa fa-plus-circle" aria-hidden="true"></i> Add
+              New task
+            </button>
 
-              <button
-                className="m-2 btn btn-primary"
-                onClick={(e) => handleTogleDateForm(e)}
-              >
-                <i className="h1 fa fa-plus-circle" aria-hidden="true"></i>{" "}
-                Filter Date
-              </button>
+            <button
+              className="m-2 btn btn-primary"
+              onClick={(e) => handleTogleDateForm(e)}
+            >
+              <i className="h1 fa fa-filter" aria-hidden="true"></i> Filter Date
+            </button>
 
-              {/* <button className="m-2 btn btn-primary"> */}
-              {/* <i className="h1 fa fa-filter" aria-hidden="true"></i>{" "} */}
-              {/* Filter by Desc */}
-              {/* </button> */}
-            </div>
-            <div className="mt-5 pt-5 row d-flex justify-content-around">
+            <div className="container p-5" style={formsContianerStyles}>
               <AddTasks
                 addTask={addTask}
                 showForm={showForm}
@@ -124,33 +123,37 @@ const Tasks = () => {
                 updateTask={updateTask}
                 showEditForm={showEditForm}
               />
-              <SearchTasks
-                searchTastks={searchTastks}
-                handleSearchInput={handleSearchInput}
-              />
-              <DateFilter showDateForm={showDateForm} />
-            </div>
-          </div>
-        </div>
-        <div className="">
-          <div className="">
-            <div className="row ">
-              {tasks.map((task, id) => {
-                return (
-                  <Task
-                    task={task}
-                    key={id}
-                    deleteTask={deleteTask}
-                    editTask={editTask}
-                    handleTogleEditShow={handleTogleEditShow}
-                    showEditForm={showEditForm}
-                  />
-                );
-              })}
             </div>
           </div>
         </div>
       </div>
+      <div className="mt-5 pt-5 row">
+        <div className="col-md-12">
+          <div className="">
+            <div className="d-flex justify-content-center align-items-center flex-column">
+              <DateFilter showDateForm={showDateForm} />
+              <SearchTasks
+                searchTastks={searchTastks}
+                handleSearchInput={handleSearchInput}
+              />
+            </div>
+
+            {tasks.map((task, id) => {
+              return (
+                <Task
+                  task={task}
+                  key={id}
+                  deleteTask={deleteTask}
+                  editTask={editTask}
+                  handleTogleEditShow={handleTogleEditShow}
+                  showEditForm={showEditForm}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      {/* </div> */}
     </>
   );
 };
