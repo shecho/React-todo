@@ -7,21 +7,27 @@ import SearchTasks from "../forms/search";
 import DateFilter from "../forms/dateFilter";
 
 const Tasks = () => {
-  const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState({});
-  const [updateData, setUpdateData] = useState({});
-  let [showForm, setShowForm] = useState(true);
-  let [showEditForm, setShowEditForm] = useState(true);
-  let [showDateForm, setShowDateForm] = useState(true);
+  let [tasks, setTasks] = useState([]);
+  let [newTask, setNewTask] = useState({});
+  let [updateData, setUpdateData] = useState({});
+  let [showForm, setShowForm] = useState(false);
+  let [showEditForm, setShowEditForm] = useState(false);
+  let [showDateForm, setShowDateForm] = useState(false);
   let [searchTastks, setSearchTasks] = useState({});
   useEffect(() => {
     getTasks();
   }, []);
+
   const getTasks = async () => {
-    // let url = `https://academlo-todolist.herokuapp.com/tasks`;
+    let url = `https://academlo-todolist.herokuapp.com/tasks`;
     // console.log(url);
-    // let response = await fetch(url);
-    // console.log("response");
+    let response = await fetch(url);
+    // console.log(response);
+    let res = await response.json();
+    // console.log(res.results);
+    let tasksList = res.results;
+    // console.log(tasksList);
+    setTasks(tasksList);
   };
 
   const handleInput = (e) => {
@@ -129,43 +135,18 @@ const Tasks = () => {
         <div className="">
           <div className="">
             <div className="row ">
-              <Task
-                deleteTask={deleteTask}
-                editTask={editTask}
-                handleTogleEditShow={handleTogleEditShow}
-                showEditForm={showEditForm}
-              />
-              <Task
-                deleteTask={deleteTask}
-                editTask={editTask}
-                handleTogleEditShow={handleTogleEditShow}
-                showEditForm={showEditForm}
-              />
-              <Task
-                deleteTask={deleteTask}
-                editTask={editTask}
-                handleTogleEditShow={handleTogleEditShow}
-                showEditForm={showEditForm}
-              />
-              <Task
-                deleteTask={deleteTask}
-                editTask={editTask}
-                handleTogleEditShow={handleTogleEditShow}
-                showEditForm={showEditForm}
-              />
-
-              <Task
-                deleteTask={deleteTask}
-                editTask={editTask}
-                handleTogleEditShow={handleTogleEditShow}
-                showEditForm={showEditForm}
-              />
-              <Task
-                deleteTask={deleteTask}
-                editTask={editTask}
-                handleTogleEditShow={handleTogleEditShow}
-                showEditForm={showEditForm}
-              />
+              {tasks.map((task, id) => {
+                return (
+                  <Task
+                    task={task}
+                    key={id}
+                    deleteTask={deleteTask}
+                    editTask={editTask}
+                    handleTogleEditShow={handleTogleEditShow}
+                    showEditForm={showEditForm}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

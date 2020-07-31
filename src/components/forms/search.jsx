@@ -7,9 +7,9 @@ const contaierStyles = {
 const inputStyles = { border: "none" };
 const SearchTasks = (props) => {
   return (
-    <div className="row">
+    <div className="text-center">
       {/* <h4> Seacrh Task</h4> */}
-      <form onInput={props.handleSearchInput} >
+      <form onInput={props.handleSearchInput}>
         <div
           className="form-group d-flex border justify-content-center align-items-center"
           style={contaierStyles}
@@ -20,7 +20,7 @@ const SearchTasks = (props) => {
             className="form-control"
             name="description"
             type="text"
-            placeholder="Filter taks by description"
+            placeholder="Filter taks by descrip"
           />
         </div>
       </form>
