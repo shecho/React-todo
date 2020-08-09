@@ -14,24 +14,22 @@ const Tasks = () => {
   let [showEditForm, setShowEditForm] = useState(false);
   let [showDateForm, setShowDateForm] = useState(false);
   let [searchTastks, setSearchTasks] = useState({});
+
   useEffect(() => {
     getTasks();
   }, []);
 
   const getTasks = async () => {
     let url = `https://academlo-todolist.herokuapp.com/tasks`;
-    // console.log(url);
     let response = await fetch(url);
-    // console.log(response);
     let res = await response.json();
-    // console.log(res.results);
     let tasksList = res.results;
-    // console.log(tasksList);
     setTasks(tasksList);
   };
 
   const handleInput = (e) => {
     setNewTask({ ...newTask, [e.target.name]: e.target.value });
+    console.log(newTask);
   };
   const handleUpdateInput = (e) => {
     setUpdateData({ ...updateData, [e.target.name]: e.target.value });
@@ -44,8 +42,12 @@ const Tasks = () => {
     console.log(searchTastks);
   };
   const addTask = async (e) => {
-    // console.log(e);
+    let page = 1;
+    let limit = 25;
     e.preventDefault();
+    const urlQueryExample = `https://academlo-todolist.herokuapp.com/tasks?page=1&limit=50`;
+    const urlQuery = `https://academlo-todolist.herokuapp.com/tasks?page=${page}&limit=${limit}`;
+    console.log(urlQueryExample, urlQueryExample);
     const url = "https://academlo-todolist.herokuapp.com/tasks/";
     let res = await fetch(url, {
       method: "POST",
@@ -56,7 +58,7 @@ const Tasks = () => {
     });
     // let response = res.json();
     console.log(res);
-    res.status > 400 ? alert("Llena todos los campos") : alert("Todo ok");
+    res.status >= 400 ? alert("Llena todos los campos") : alert("Todo ok");
     getTasks();
   };
   const deleteTask = async (e) => {
@@ -81,6 +83,7 @@ const Tasks = () => {
     e.preventDefault();
     setShowDateForm(!showDateForm);
   };
+
   const panelContainerStyles = {
     position: "absolute",
     top: "0",
