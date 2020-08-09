@@ -29,17 +29,17 @@ const Tasks = () => {
 
   const handleInput = (e) => {
     setNewTask({ ...newTask, [e.target.name]: e.target.value });
-    console.log(newTask);
+    // console.log(newTask);
   };
   const handleUpdateInput = (e) => {
     setUpdateData({ ...updateData, [e.target.name]: e.target.value });
-    console.log(updateData);
+    // console.log(updateData);
   };
 
   const handleSearchInput = (e) => {
     e.preventDefault();
     setSearchTasks({ ...searchTastks, [e.target.name]: e.target.value });
-    console.log(searchTastks);
+    // console.log(searchTastks);
   };
   const addTask = async (e) => {
     let page = 1;
@@ -47,7 +47,7 @@ const Tasks = () => {
     e.preventDefault();
     const urlQueryExample = `https://academlo-todolist.herokuapp.com/tasks?page=1&limit=50`;
     const urlQuery = `https://academlo-todolist.herokuapp.com/tasks?page=${page}&limit=${limit}`;
-    console.log(urlQueryExample, urlQueryExample);
+    // console.log(urlQueryExample, urlQueryExample);
     const url = "https://academlo-todolist.herokuapp.com/tasks/";
     let res = await fetch(url, {
       method: "POST",
@@ -57,7 +57,7 @@ const Tasks = () => {
       body: JSON.stringify(newTask),
     });
     // let response = res.json();
-    console.log(res);
+    // console.log(res);
     res.status >= 400 ? alert("Llena todos los campos") : alert("Todo ok");
     getTasks();
   };
@@ -144,11 +144,13 @@ const Tasks = () => {
             {tasks.map((task, id) => {
               return (
                 <Task
+                  getTasks={getTasks}
                   task={task}
                   key={id}
                   deleteTask={deleteTask}
                   editTask={editTask}
                   handleTogleEditShow={handleTogleEditShow}
+                  handleUpdateInput={handleUpdateInput}
                   showEditForm={showEditForm}
                 />
               );
