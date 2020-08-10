@@ -29,11 +29,20 @@ const Task = (props) => {
       },
       body: JSON.stringify(data),
     });
-    // console.log(res);
+    console.log(res);
 
-    props.getTasks()
-    setShowEditInputs(false)
+    props.getTasks();
+    setShowEditInputs(false);
+  };
+  const deleteTask = async (e) => {
+    e.preventDefault();
+    console.log(props.task._id);
+    let id = props.task._id;
+    let url = `https://academlo-todolist.herokuapp.com/tasks/${id}`;
+    let request = await fetch(url, { method: "DELETE" });
 
+    console.log(request)
+    props.getTasks();
   };
   const cardStyles = {
     flexDirection: "row",
@@ -53,6 +62,7 @@ const Task = (props) => {
                 onInput={(e) => handleFormsInput(e)}
                 type="text"
                 name="content"
+                
               />
             </div>
             <div className=" d-flex justify-content-center align-items-center ">
@@ -76,7 +86,11 @@ const Task = (props) => {
             >
               <i className=" fa fa-save" aria-hidden="true"></i>
             </button>
-            <button className="m-2 btn btn-danger " type="submit">
+            <button
+              onClick={(e) => deleteTask(e)}
+              className="m-2 btn btn-danger "
+              type="submit"
+            >
               <i className="fa fa-trash-o" aria-hidden="true"></i>
             </button>
 

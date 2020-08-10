@@ -42,11 +42,11 @@ const Tasks = () => {
     // console.log(searchTastks);
   };
   const addTask = async (e) => {
-    let page = 1;
-    let limit = 25;
     e.preventDefault();
-    const urlQueryExample = `https://academlo-todolist.herokuapp.com/tasks?page=1&limit=50`;
-    const urlQuery = `https://academlo-todolist.herokuapp.com/tasks?page=${page}&limit=${limit}`;
+    // let page = 1;
+    // let limit = 25;
+    // const urlQueryExample = `https://academlo-todolist.herokuapp.com/tasks?page=0&limit=50`;
+    // const urlQuery = `https://academlo-todolist.herokuapp.com/tasks?page=${page}&limit=${limit}`;
     // console.log(urlQueryExample, urlQueryExample);
     const url = "https://academlo-todolist.herokuapp.com/tasks/";
     let res = await fetch(url, {
