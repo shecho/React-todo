@@ -13,7 +13,7 @@ const Tasks = () => {
   let [showForm, setShowForm] = useState(false);
   let [showEditForm, setShowEditForm] = useState(false);
   let [showDateForm, setShowDateForm] = useState(false);
-  let [searchTastks, setSearchTasks] = useState({});
+  let [searchTastks, setSearchTasks] = useState("");
 
   useEffect(() => {
     getTasks();
@@ -38,8 +38,8 @@ const Tasks = () => {
 
   const handleSearchInput = (e) => {
     e.preventDefault();
-    setSearchTasks({ ...searchTastks, [e.target.name]: e.target.value });
-    // console.log(searchTastks);
+    setSearchTasks(e.target.value);
+    console.log(searchTastks);
   };
   const addTask = async (e) => {
     e.preventDefault();
@@ -140,8 +140,9 @@ const Tasks = () => {
                 handleSearchInput={handleSearchInput}
               />
             </div>
-
-            {tasks.map((task, id) => {
+            {tasks
+                .filter(tasks => tasks.content.toLowerCase().includes(searchTastks))
+                .map((task, id) => {
               return (
                 <Task
                   getTasks={getTasks}
