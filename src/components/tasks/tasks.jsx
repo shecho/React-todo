@@ -5,7 +5,7 @@ import AddTasks from "../forms/addTask";
 import UpdateTasks from "../forms/updateTask";
 import SearchTasks from "../forms/search";
 import DateFilter from "../forms/dateFilter";
-
+import Pagination from "../pagination/pagination";
 const Tasks = () => {
   let [tasks, setTasks] = useState([]);
   let [newTask, setNewTask] = useState({});
@@ -134,6 +134,7 @@ const Tasks = () => {
         <div className="col-md-12">
           <div className="">
             <div className="d-flex justify-content-center align-items-center flex-column">
+              <Pagination />
               <DateFilter showDateForm={showDateForm} />
               <SearchTasks
                 searchTastks={searchTastks}
@@ -141,24 +142,27 @@ const Tasks = () => {
               />
             </div>
             {tasks
-                .filter(tasks => tasks.content.toLowerCase().includes(searchTastks))
-                .map((task, id) => {
-              return (
-                <Task
-                  getTasks={getTasks}
-                  task={task}
-                  key={id}
-                  deleteTask={deleteTask}
-                  editTask={editTask}
-                  handleTogleEditShow={handleTogleEditShow}
-                  handleUpdateInput={handleUpdateInput}
-                  showEditForm={showEditForm}
-                />
-              );
-            })}
+              .filter((tasks) =>
+                tasks.content.toLowerCase().includes(searchTastks)
+              )
+              .map((task, id) => {
+                return (
+                  <Task
+                    getTasks={getTasks}
+                    task={task}
+                    key={id}
+                    deleteTask={deleteTask}
+                    editTask={editTask}
+                    handleTogleEditShow={handleTogleEditShow}
+                    handleUpdateInput={handleUpdateInput}
+                    showEditForm={showEditForm}
+                  />
+                );
+              })}
           </div>
         </div>
       </div>
+
       {/* </div> */}
     </>
   );
