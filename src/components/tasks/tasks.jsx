@@ -6,6 +6,9 @@ import UpdateTasks from "../forms/updateTask";
 import SearchTasks from "../forms/search";
 import DateFilter from "../forms/dateFilter";
 import Pagination from "../pagination/pagination";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Tasks = () => {
   let [tasks, setTasks] = useState([]);
   let [newTask, setNewTask] = useState({});
@@ -19,6 +22,7 @@ const Tasks = () => {
     getTasks();
   }, []);
 
+  const addTaskToast= (message) => toast(message);
   const getTasks = async () => {
     let url = `https://academlo-todolist.herokuapp.com/tasks`;
     let response = await fetch(url);
@@ -58,7 +62,7 @@ const Tasks = () => {
     });
     // let response = res.json();
     // console.log(res);
-    res.status >= 400 ? alert("Llena todos los campos") : alert("Todo ok");
+    res.status >= 400 ? addTaskToast("llena los campos") : addTaskToast("TODO OK");
     getTasks();
   };
   const deleteTask = async (e) => {
@@ -140,6 +144,9 @@ const Tasks = () => {
                 searchTastks={searchTastks}
                 handleSearchInput={handleSearchInput}
               />
+            </div>
+            <div>
+              <ToastContainer />
             </div>
             {tasks
               .filter((tasks) =>
