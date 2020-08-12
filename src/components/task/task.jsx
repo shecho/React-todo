@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Task = (props) => {
   const [showEditInputs, setShowEditInputs] = useState(false);
   const [editForms, setEditForms] = useState({});
@@ -7,6 +10,7 @@ const Task = (props) => {
     e.preventDefault();
     setShowEditInputs(!showEditInputs);
   };
+  const TaskToast = async (message) => toast(message);
   const handleFormsInput = (e) => {
     setEditForms({
       ...editForms,
@@ -30,7 +34,9 @@ const Task = (props) => {
       body: JSON.stringify(data),
     });
     console.log(res);
-
+    res.status === 200
+      ? TaskToast("Se han guadado los cambios")
+      : TaskToast("Llena los campos");
     props.getTasks();
     setShowEditInputs(false);
   };
@@ -41,7 +47,10 @@ const Task = (props) => {
     let url = `https://academlo-todolist.herokuapp.com/tasks/${id}`;
     let request = await fetch(url, { method: "DELETE" });
 
-    console.log(request)
+    console.log(request);
+    request.status === 200
+      ? TaskToast("Se ha eliminado la tarea")
+      : TaskToast("Algo salio mal");
     props.getTasks();
   };
   const cardStyles = {
@@ -62,7 +71,6 @@ const Task = (props) => {
                 onInput={(e) => handleFormsInput(e)}
                 type="text"
                 name="content"
-                
               />
             </div>
             <div className=" d-flex justify-content-center align-items-center ">

@@ -62,8 +62,8 @@ const Tasks = () => {
     });
     // let response = res.json();
     // console.log(res);
-    res.status >= 400 ? addTaskToast("llena los campos") : addTaskToast("TODO OK");
-    getTasks();
+    res.status >= 400 ?  addTaskToast("llena los campos") : addTaskToast("TODO OK");
+     getTasks();
   };
   const deleteTask = async (e) => {
     console.log(e);
