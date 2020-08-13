@@ -15,7 +15,7 @@ export default function Login2(props) {
   };
   const loginUser = async (e) => {
     e.preventDefault();
-    let url = `https://academlo-todolist.herokuapp.com/login`;
+    let url = `/login`;
     // console.log(url);
     let response = await fetch(url, {
       method: "POST",

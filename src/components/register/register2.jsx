@@ -36,7 +36,9 @@ export default function Register2() {
     //   : response.status >= 300
     //   ? alert("Redirecionado")
     //   : alert("credenciasles correctas");
-    response.status > 400 ? TaskToast("Llena todos los campos") : TaskToast("Registrado Exitosamente, ahora te puedes logar");
+    response.status > 400
+      ? TaskToast("Llena todos los campos")
+      : TaskToast("Registrado Exitosamente, ahora te puedes logar");
 
     // history.push
   };

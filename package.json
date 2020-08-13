@@ -13,6 +13,7 @@
     "react-spinners": "^0.9.0",
     "react-toastify": "^6.0.8"
   },
+  "proxy": "https://academlo-todolist.herokuapp.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
