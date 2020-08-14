@@ -1,9 +1,8 @@
 import React from "react";
-
 const AddTask = (props) => {
   return (
     <>
-      <div className={`text-center ${props.showForm ? '' : 'd-none'}`}>
+      <div className={`text-center ${props.showForm ? "" : "d-none"}`}>
         <h4> Add Tasks</h4>
         <form onInput={props.handleInput} onSubmit={(e) => props.addTask(e)}>
           <div className="form-group">
@@ -20,7 +19,7 @@ const AddTask = (props) => {
               capture
               name="date"
               type="date"
-            placeholder="Date"
+              placeholder="Date"
             />
           </div>
           <input className="btn btn-success btn-block" type="submit" />
