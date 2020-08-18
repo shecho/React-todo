@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Task = (props) => {
   const [showEditInputs, setShowEditInputs] = useState(false);
   const [editForms, setEditForms] = useState({});
+  const [isCompleted, setIsCompleted] = useState(props.task.is_completed);
   const hadnleTogleEditInput = (e) => {
     e.preventDefault();
     setShowEditInputs(!showEditInputs);
@@ -40,6 +41,19 @@ const Task = (props) => {
     props.getTasks();
     setShowEditInputs(false);
   };
+
+  const completeTaks = async (e) => {
+    // e.preventDefault();
+    setIsCompleted((prev) => !prev);
+    let data = props.task;
+    // console.log(data)
+    data = { ...data };
+
+    console.log(data);
+    console.log(isCompleted);
+
+    // });
+  };
   const deleteTask = async (e) => {
     e.preventDefault();
     console.log(props.task._id);
@@ -56,6 +70,11 @@ const Task = (props) => {
   const cardStyles = {
     flexDirection: "row",
   };
+  const styleCompleted = () => {
+    return {
+      textDecoration: isCompleted ? "line-through" : "none",
+    };
+  };
   return (
     <div className="">
       <div className="col-md-12 m-3 p-2">
@@ -63,9 +82,16 @@ const Task = (props) => {
           className="p-3 d-flex card  justify-content-around"
           style={cardStyles}
         >
-          <div className="d-flex ">
+          <div className="d-flex align-items-center">
             <div className="d-flex justify-content-center align-items-center ">
-              <h6 className="m-2 card-title">{props.task.content}</h6>
+              <div
+                className={`d-flex align-items-center  ${
+                  isCompleted ? "text-muted" : ""
+                }`}
+                style={styleCompleted()}
+              >
+                {props.task.content}
+              </div>
               <input
                 className={`form-control  ${showEditInputs ? "" : "d-none"}`}
                 onInput={(e) => handleFormsInput(e)}
@@ -74,7 +100,9 @@ const Task = (props) => {
               />
             </div>
             <div className=" d-flex justify-content-center align-items-center ">
-              <p className="m-2 card-text">{props.task.date}</p>
+              <p className={`m-2 card-text  ${
+                  isCompleted ? "text-muted" : ""
+                }`}>{props.task.date}</p>
 
               <input
                 className={`form-control  ${showEditInputs ? "" : "d-none"}`}
@@ -84,7 +112,7 @@ const Task = (props) => {
               />
             </div>
           </div>
-          <div className="align-self-end">
+          <div className="align-self-end d-flex">
             <button
               className={`m-2 btn btn-success   ${
                 showEditInputs ? "" : "d-none"
@@ -108,6 +136,13 @@ const Task = (props) => {
               type="submit"
             >
               <i className=" fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button className="m-2 btn btn-success " type="submit">
+              <input
+                onClick={(e) => completeTaks(e)}
+                type="checkbox"
+                id="exampleCheck1"
+              />
             </button>
             <button
               onClick={props.handleTogleEditShow}

@@ -22,7 +22,7 @@ const Tasks = () => {
     getTasks();
   }, []);
 
-  const addTaskToast= (message) => toast(message);
+  const addTaskToast = (message) => toast(message);
   const getTasks = async () => {
     let url = `https://academlo-todolist.herokuapp.com/tasks`;
     let response = await fetch(url);
@@ -62,8 +62,10 @@ const Tasks = () => {
     });
     // let response = res.json();
     // console.log(res);
-    res.status >= 400 ?  addTaskToast("llena los campos") : addTaskToast("TODO OK");
-     getTasks();
+    res.status >= 400
+      ? addTaskToast("llena los campos")
+      : addTaskToast("TODO OK");
+    getTasks();
   };
   const deleteTask = async (e) => {
     console.log(e);
@@ -157,6 +159,7 @@ const Tasks = () => {
                   <Task
                     getTasks={getTasks}
                     task={task}
+                    setTasks={setTasks}
                     key={id}
                     deleteTask={deleteTask}
                     editTask={editTask}
