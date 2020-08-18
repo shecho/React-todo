@@ -42,17 +42,28 @@ const Task = (props) => {
     setShowEditInputs(false);
   };
 
-  const completeTaks = async (e) => {
+  const completeTaks = async () => {
     // e.preventDefault();
     setIsCompleted((prev) => !prev);
     let data = props.task;
-    // console.log(data)
-    data = { ...data };
-
+    data.is_completed = isCompleted
     console.log(data);
-    console.log(isCompleted);
 
-    // });
+    let id = props.task._id;
+    let url = `https://academlo-todolist.herokuapp.com/tasks/${id}`;
+    // console.log(url);
+    let res = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log(res);
+    res.status === 200
+      ? TaskToast("Se ha completado la tarea")
+      : TaskToast("Llena los campos");
+    props.getTasks();
   };
   const deleteTask = async (e) => {
     e.preventDefault();
@@ -139,9 +150,10 @@ const Task = (props) => {
             </button>
             <button className="m-2 btn btn-success " type="submit">
               <input
-                onClick={(e) => completeTaks(e)}
+                onChange={(e) => completeTaks(e)}
                 type="checkbox"
                 id="exampleCheck1"
+                checked={props.task.is_completed}
               />
             </button>
             <button
