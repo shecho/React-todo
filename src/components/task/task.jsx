@@ -24,6 +24,7 @@ const Task = (props) => {
   const updateTaskData = async (e) => {
     e.preventDefault();
     let data = editForms;
+  
     let id = props.task._id;
     let url = `https://academlo-todolist.herokuapp.com/tasks/${id}`;
     // console.log(url);

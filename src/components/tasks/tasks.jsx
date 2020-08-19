@@ -8,6 +8,7 @@ import DateFilter from "../forms/dateFilter";
 import Pagination from "../pagination/pagination";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import moment from "moment";
 
 const Tasks = () => {
   let [tasks, setTasks] = useState([]);
@@ -17,6 +18,7 @@ const Tasks = () => {
   let [showEditForm, setShowEditForm] = useState(false);
   let [showDateForm, setShowDateForm] = useState(false);
   let [searchTastks, setSearchTasks] = useState("");
+  const [filterDate, setFilterDate] = useState("");
 
   useEffect(() => {
     getTasks();
@@ -100,6 +102,43 @@ const Tasks = () => {
     top: "15vh",
     rith: "",
   };
+
+  const onChangeSelect = (task) => {
+    let today = moment(); //Fecha de hoy usando moment
+    let startOfWeek = moment().startOf("week");
+    let endOfWeek = moment().endOf("week");
+    let startOfNextWeek = moment(endOfWeek).add(1, "seconds");
+    let endOfNextWeek = moment(endOfWeek).add(7, "days");
+    switch (filterDate) {
+      case "today":
+        if (moment(task.date).isSame(today, "day")) {
+          return true;
+        }
+        return false;
+      case "week":
+        if (moment(task.date).isBetween(startOfWeek, endOfWeek)) {
+          return true;
+        }
+        return false;
+      case "nextWeek":
+        if (moment(task.date).isBetween(startOfNextWeek, endOfNextWeek)) {
+          return true;
+        }
+        return false;
+      case "complete":
+        if (task.is_completed) {
+          return true;
+        }
+        return false;
+      case "noComplete":
+        if (!task.is_completed) {
+          return true;
+        }
+        return false;
+      default:
+        return true;
+    }
+  };
   return (
     <>
       {/* <div className=""> */}
@@ -141,7 +180,10 @@ const Tasks = () => {
           <div className="">
             <div className="d-flex justify-content-center align-items-center flex-column">
               <Pagination />
-              <DateFilter showDateForm={showDateForm} />
+              <DateFilter
+                setFilterDate={setFilterDate}
+                showDateForm={showDateForm}
+              />
               <SearchTasks
                 searchTastks={searchTastks}
                 handleSearchInput={handleSearchInput}
@@ -151,6 +193,7 @@ const Tasks = () => {
               <ToastContainer />
             </div>
             {tasks
+              .filter((task) => onChangeSelect(task))
               .filter((tasks) =>
                 tasks.content.toLowerCase().includes(searchTastks)
               )

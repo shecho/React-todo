@@ -16,20 +16,13 @@ const DateFilter = (props) => {
             style={contaierStyles}
           >
             <i className="h1 p-1 text-dark fa fa-search" aria-hidden="true"></i>
-            <select name="" id="">
+            <select onClick={e=> props.setFilterDate(e.target.value)} >
               <option value="All">All</option>
               <option value="week">This Week</option>
               <option value="nextWeek">Next Week</option>
-              <option value="completed">Completed</option>
-              <option value="pending">Pending</option>
+              <option value="complete">Completed</option>
+              <option value="noComplete">Pending</option>
             </select>
-            {/* <input */}
-              {/* style={inputStyles} */}
-              {/* className="form-control" */}
-              {/* name="name" */}
-              {/* type="date" */}
-              {/* placeholder="Select a Date" */}
-            {/* /> */}
           </div>
         </form>
       </div>
